@@ -5,7 +5,7 @@ import { Component, Input, OnInit } from '@angular/core';
  */
 @Component({
   selector: 'price-display',
-  templateUrl: `
+  template: `
     <div class="price-display">\${{ price }}</div>
   `
 })

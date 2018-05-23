@@ -3,7 +3,7 @@ import { Product } from "../product.model";
 
 @Component({
   selector: 'product-image',
-  templateUrl: `
+  template: `
     <img class="product-image" [src]="product.imageUrl">
   `
 })
