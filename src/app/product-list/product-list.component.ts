@@ -1,9 +1,8 @@
-import { Component, EventEmitter, Input, Output, OnInit, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Product } from '../product.model';
 
 /**
- * @ProductList: A component for rendering all ProductRows and
- * storing the currently selecte Product
+ * @ProductList: A component for rendering all ProductRows and storing the currently selected Product
  */
 @Component({
   selector: 'product-list',
@@ -33,4 +32,26 @@ export class ProductListComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * Event that selects a currentProduct.
+   *
+   * @param {Product} product selected
+   */
+  clicked ( product: Product ): void {
+    this.currentProduct = product;
+    this.onProductSelected.emit ( product );
+  }
+
+  /**
+   * Determine if product is the current Product selected.
+   *
+   * @param {Product} product
+   * @returns {boolean} true if product's sku matches the currentProduct's sku, false otherwise
+   */
+  isSelected ( product: Product ): boolean {
+    if ( !product || !this.currentProduct ) {
+      return false;
+    }
+    return product.sku === this.currentProduct.sku;
+  }
 }
